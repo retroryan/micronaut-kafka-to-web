@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 
-@KafkaListener(groupId = "portable_weather")
+@KafkaListener(groupId = "${portable.group_id}")
 public class KafkaClientListener {
     private static final Logger LOG = LoggerFactory.getLogger(KafkaClientListener.class);
 
