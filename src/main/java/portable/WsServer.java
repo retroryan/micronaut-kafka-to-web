@@ -13,8 +13,6 @@ import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.CompletableFuture;
-
 @ServerWebSocket("/ws")
 public class WsServer {
 
@@ -48,13 +46,16 @@ public class WsServer {
             @Override
             public void onSubscribe(Subscription subscription) {
             }
+
             @Override
             public void onNext(String s) {
             }
+
             @Override
             public void onError(Throwable throwable) {
                 System.out.println("throwable = " + throwable);
             }
+
             @Override
             public void onComplete() {
                 System.out.println("broadcast = " + broadcast);

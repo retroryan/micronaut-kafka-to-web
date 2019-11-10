@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import java.util.UUID;
 
 
 @Controller()
@@ -18,10 +17,10 @@ public class Application implements ApplicationEventListener<ServerStartupEvent>
 
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
-    private final WsClientConfig wsClientConfig;
+    private final PortableClientConfig portableClientConfig;
 
-    public Application(WsClientConfig wsClientConfig) {
-        this.wsClientConfig = wsClientConfig;
+    public Application(PortableClientConfig portableClientConfig) {
+        this.portableClientConfig = portableClientConfig;
     }
 
     @Inject
@@ -44,9 +43,8 @@ public class Application implements ApplicationEventListener<ServerStartupEvent>
 
     @EventListener
     public void onStartup(ServerStartupEvent event) {
-        LOG.info("Connecting with ws client config = " + wsClientConfig);
-        LOG.info("bootstrap servers = " + wsClientConfig.getBootstrap_servers());
-        LOG.info("topics = " + wsClientConfig.getTopic());
+        LOG.info("Connecting with ws client config = " + portableClientConfig);
+        LOG.info("topics = " + portableClientConfig.getTopic());
 
     }
 }
